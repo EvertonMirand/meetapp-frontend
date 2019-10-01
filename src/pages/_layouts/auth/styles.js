@@ -4,7 +4,11 @@ import Colors from '~/theme/Colors';
 
 export const Wrapper = styled.div`
   height: 100%;
-  background: linear-gradient(180deg, #22202c 0%, #402845 100%);
+  background: linear-gradient(
+    180deg,
+    ${Colors.backgroundPrimary} 0%,
+    ${Colors.backgroundSecundary} 100%
+  );
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,7 +25,7 @@ export const Content = styled.div`
     margin-top: 30px;
 
     input {
-      background: rgba(0, 0, 0, 0.1);
+      background: ${Colors.inputBackground};
       border: 0;
       border-radius: 4px;
       height: 44px;
@@ -35,7 +39,7 @@ export const Content = styled.div`
     }
 
     span {
-      color: #fb6f91;
+      color: ${Colors.span};
       align-self: flex-start;
       margin: 0 0 10px;
       font-weight: bold;
@@ -44,7 +48,7 @@ export const Content = styled.div`
     button {
       margin: 5px 0 0;
       height: 44px;
-      background: #f94d6a;
+      background: ${Colors.buttonBackground};
       font-weight: 600;
       color: ${Colors.defaultText};
       border: 0;
@@ -54,12 +58,12 @@ export const Content = styled.div`
       transition: backgroung 0.2s;
 
       &:hover {
-        background: ${darken(0.03, '#f94d6a')};
+        background: ${darken(0.03, Colors.buttonBackground)};
       }
     }
 
     a {
-      color: rgba(255, 255, 255, 0.6);
+      color: ${Colors.link};
       margin-top: 15px;
       font-size: 16px;
       opacity: 0.8;

@@ -6,10 +6,12 @@ import { SESSION } from '~/constants/ApiCalls';
 import { signFailure, signInSucess } from './actions';
 import { SIGN_IN_REQUEST } from './type';
 import { REHYDRATE } from '~/store/type';
+import history from '~/services/history';
 
 export function* signIn({ payload }) {
   try {
     const { email, password } = payload;
+
     const response = yield call(api.post, SESSION, {
       email,
       password,
@@ -17,13 +19,11 @@ export function* signIn({ payload }) {
 
     const { token, user } = response.data;
 
-    if (!user.provider) {
-      toast.error('Usuário não é prestador');
-      return;
-    }
-
     api.defaults.headers.Authorization = `Bearer ${token}`;
+
     yield put(signInSucess(token, user));
+
+    history.push('/dashboard');
   } catch (err) {
     toast.error('Falha na autentificação, verifique os seus dados.');
     yield put(signFailure());

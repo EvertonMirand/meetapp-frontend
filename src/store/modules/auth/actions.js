@@ -26,7 +26,7 @@ export function signInSucess(token, user) {
   };
 }
 
-export function signUPRequest(name, email, password) {
+export function signUpRequest(name, email, password) {
   return {
     type: SIGN_UP_REQUEST,
     payload: {

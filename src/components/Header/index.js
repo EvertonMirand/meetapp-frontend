@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Container, Content, Profile, Button } from './styles';
+import { Container, Content, Profile } from './styles';
 
 import logo from '~/assets/logo.svg';
+import Button from '../Button';
 
 export default function Header() {
   // const profile = useSelector(state => state.user.profile);

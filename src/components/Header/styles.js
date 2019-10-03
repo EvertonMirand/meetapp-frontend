@@ -30,6 +30,10 @@ export const Content = styled.div`
     align-items: center;
     button {
       margin: 5px 0 0;
+      font-size: 16px;
+      font-weight: 600;
+      width: 71px;
+      height: 44px;
     }
   }
 `;

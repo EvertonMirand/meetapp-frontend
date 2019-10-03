@@ -14,6 +14,8 @@ const Button = styled.button`
 
   transition: background 0.2s;
 
+  justify-content: space-between;
+
   &:hover {
     background: ${darken(0.03, Colors.buttonBackground)};
   }

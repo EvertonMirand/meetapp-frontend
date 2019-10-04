@@ -5,7 +5,6 @@ import Colors from '~/theme/Colors';
 export const Container = styled.div`
   max-width: 920px;
   margin: 50px auto;
-  flex-direction: row;
 
   header {
     margin: 10px;
@@ -34,6 +33,8 @@ export const Container = styled.div`
 
   ul {
     margin-top: 30px;
+    grid-gap: 10px;
+    display: grid;
   }
 `;
 
@@ -58,9 +59,10 @@ export const MeetUp = styled.li`
     display: flex;
     align-items: center;
     font-size: 16px;
-    svg {
-      margin-left: 5px;
-    }
+  }
+
+  svg {
+    margin-left: 5px;
   }
 `;
 
@@ -74,17 +76,19 @@ export const PageControl = styled.div`
     background: none;
     border: 0;
     align-items: center;
-
+    font-size: 16px;
     color: ${Colors.defaultText};
 
     transition: color 0.2s;
     padding: 0 25px;
+    display: flex;
 
     &:hover {
       color: ${darken(0.3, Colors.defaultText)};
     }
 
     &[disabled] {
+      background: none;
       color: #ccc;
       cursor: auto;
     }

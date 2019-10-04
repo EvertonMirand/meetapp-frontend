@@ -1,42 +1,99 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
 import { MdChevronRight, MdChevronLeft } from 'react-icons/md';
+import { format, parseISO } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 import { Container, MeetUp, PageControl } from './styles';
 
 import AddButton from '~/components/AddButton';
 import Colors from '~/theme/Colors';
+import api from '~/services/api';
+import { ORGANIZING } from '~/constants/ApiCalls';
+import { DEFAULT_DATE } from '~/constants/DateFormat';
 
 export default function Dashboard() {
-  return (
-    <Container>
-      <header>
-        <h1>Meus meetups</h1>
-        <Link to="new">
-          <AddButton>Novo meetup</AddButton>
-        </Link>
-      </header>
-      <ul>
-        <Link to="meetup">
+  const [meetups, setMeetups] = useState([]);
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    const loadMeetups = async () => {
+      const response = await api.get(ORGANIZING, {
+        params: { page },
+      });
+      const data = response.data.map(meetup => ({
+        ...meetup,
+        dateFormatted: format(parseISO(meetup.date), DEFAULT_DATE, {
+          locale: pt,
+        }),
+      }));
+      setMeetups(data);
+    };
+    loadMeetups();
+  }, [page]);
+
+  const renderHeader = () => (
+    <header>
+      <h1>Meus meetups</h1>
+      <Link to="new">
+        <AddButton>Novo meetup</AddButton>
+      </Link>
+    </header>
+  );
+
+  const handleNextPage = () => {
+    setPage(page + 1);
+  };
+
+  const handlePrevPage = () => {
+    setPage(page - 1);
+  };
+
+  const quantidadeMeetUps = meetups.length;
+
+  const renderMeetups = () => (
+    <ul>
+      {meetups.map(meetup => (
+        <Link
+          key={meetup.id}
+          to={{
+            pathname: `/meetup/${meetup.id}`,
+            state: { meetup },
+          }}
+        >
           <MeetUp>
-            <strong>React Native</strong>
+            <strong>{meetup.title}</strong>
             <div>
-              24 de junho às, 20h
+              {meetup.dateFormatted}
               <MdChevronRight size={24} color={Colors.defaultText} />
             </div>
           </MeetUp>
         </Link>
-      </ul>
+      ))}
+    </ul>
+  );
 
-      <PageControl>
-        <button type="button" disabled>
-          <MdChevronLeft size={25} />
-        </button>
-        <span>1</span>
-        <button type="button">
-          <MdChevronRight size={25} />
-        </button>
-      </PageControl>
+  const renderPageControl = () => (
+    <PageControl>
+      <button type="button" onClick={handlePrevPage} disabled={page === 1}>
+        <MdChevronLeft size={25} />
+      </button>
+      <span>{page}</span>
+      <button
+        type="button"
+        onClick={handleNextPage}
+        disabled={quantidadeMeetUps < 10}
+      >
+        <MdChevronRight size={25} />
+      </button>
+    </PageControl>
+  );
+
+  return (
+    <Container>
+      {renderHeader()}
+      {renderMeetups()}
+      {renderPageControl()}
     </Container>
   );
 }

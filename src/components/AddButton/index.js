@@ -5,9 +5,9 @@ import Button from '../Button';
 
 // import { Container } from './styles';
 
-export default function AddButton({ children }) {
+export default function AddButton({ children, onClick }) {
   return (
-    <Button>
+    <Button onClick={onClick}>
       <MdAddCircleOutline size={24} color="#fff" />
       {children}
     </Button>
@@ -19,4 +19,9 @@ AddButton.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
+  onClick: PropTypes.func,
+};
+
+AddButton.defaultProps = {
+  onClick: () => {},
 };

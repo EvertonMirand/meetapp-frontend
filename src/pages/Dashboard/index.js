@@ -1,26 +1,42 @@
 import React from 'react';
 
-import { MdAddCircleOutline } from 'react-icons/md';
-import { Container } from './styles';
-import Button from '~/components/Button';
-import Colors from '~/theme/Colors';
+import { Link } from 'react-router-dom';
+import { MdChevronRight, MdChevronLeft } from 'react-icons/md';
+import { Container, MeetUp, PageControl } from './styles';
+
 import AddButton from '~/components/AddButton';
+import Colors from '~/theme/Colors';
 
 export default function Dashboard() {
   return (
     <Container>
       <header>
         <h1>Meus meetups</h1>
-        <AddButton>Novo meetup</AddButton>
+        <Link to="new">
+          <AddButton>Novo meetup</AddButton>
+        </Link>
       </header>
-      {/* <ul>
-        <Time key={time.time} past={time.past} available={!time.appointment}>
-          <strong>{time.time}</strong>
-          <span>
-            {time.appointment ? time.appointment.user.name : 'Em aberto'}
-          </span>
-        </Time>
-      </ul> */}
+      <ul>
+        <Link to="meetup">
+          <MeetUp>
+            <strong>React Native</strong>
+            <div>
+              24 de junho às, 20h
+              <MdChevronRight size={24} color={Colors.defaultText} />
+            </div>
+          </MeetUp>
+        </Link>
+      </ul>
+
+      <PageControl>
+        <button type="button" disabled>
+          <MdChevronLeft size={25} />
+        </button>
+        <span>1</span>
+        <button type="button">
+          <MdChevronRight size={25} />
+        </button>
+      </PageControl>
     </Container>
   );
 }

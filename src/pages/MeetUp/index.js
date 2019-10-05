@@ -27,20 +27,24 @@ export default function MeetUp({ location }) {
     </header>
   );
 
+  const renderDetail = () => (
+    <Detail>
+      <img src={meetup.File.url} alt="Banner" />
+      <span>{meetup.description}</span>
+      <footer>
+        <MdEvent size={20} color={Colors.opacityIcon} />
+        <time>{meetup.dateFormatted}</time>
+
+        <MdPlace size={20} color={Colors.opacityIcon} />
+        <address>{meetup.location}</address>
+      </footer>
+    </Detail>
+  );
+
   return (
     <Container>
       {renderHeader()}
-      <Detail>
-        <img src={meetup.File.url} alt="Banner" />
-        <span>{meetup.description}</span>
-        <footer>
-          <MdEvent size={20} color={Colors.opacityIcon} />
-          <time>{meetup.dateFormatted}</time>
-
-          <MdPlace size={20} color={Colors.opacityIcon} />
-          <address>{meetup.location}</address>
-        </footer>
-      </Detail>
+      {renderDetail()}
     </Container>
   );
 }

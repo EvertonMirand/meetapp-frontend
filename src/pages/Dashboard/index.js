@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
 import { MdChevronRight, MdChevronLeft } from 'react-icons/md';
-import { format, parseISO } from 'date-fns';
+import { format, parseISO, isBefore } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import { Container, MeetUp, PageControl } from './styles';
 
@@ -26,20 +26,13 @@ export default function Dashboard() {
         dateFormatted: format(parseISO(meetup.date), DEFAULT_DATE, {
           locale: pt,
         }),
+        past: isBefore(parseISO(meetup.date), new Date()),
       }));
+
       setMeetups(data);
     };
     loadMeetups();
   }, [page]);
-
-  const renderHeader = () => (
-    <header>
-      <h1>Meus meetups</h1>
-      <Link to="new">
-        <AddButton>Novo meetup</AddButton>
-      </Link>
-    </header>
-  );
 
   const handleNextPage = () => {
     setPage(page + 1);
@@ -50,6 +43,15 @@ export default function Dashboard() {
   };
 
   const quantidadeMeetUps = meetups.length;
+
+  const renderHeader = () => (
+    <header>
+      <h1>Meus meetups</h1>
+      <Link to="new">
+        <AddButton>Novo meetup</AddButton>
+      </Link>
+    </header>
+  );
 
   const renderMeetups = () => (
     <ul>

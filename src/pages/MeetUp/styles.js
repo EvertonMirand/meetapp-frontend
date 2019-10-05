@@ -31,3 +31,43 @@ export const Container = styled.div`
     }
   }
 `;
+
+export const Detail = styled.div`
+  display: flex;
+  justify-content: space-between;
+  max-width: 920px;
+  margin: 50px auto;
+
+  flex-direction: column;
+
+  img {
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 5px;
+    border-radius: 4px;
+  }
+
+  span {
+    font-size: 18px;
+    color: ${Colors.defaultText};
+    line-height: 32px;
+    display: flex;
+    text-align: justify;
+  }
+
+  footer {
+    color: ${Colors.opacityIcon};
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+
+    time {
+      margin-left: 6px;
+      margin-right: 20px;
+    }
+
+    address {
+      margin-left: 5px;
+    }
+  }
+`;

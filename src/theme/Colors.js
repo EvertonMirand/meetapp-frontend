@@ -11,4 +11,6 @@ export default {
   editButton: '#4DBAF9',
   headerBackground: 'rgba(0, 0, 0, 0.3)',
   linkDark: '#999',
+  defaultIcon: '#fff',
+  opacityIcon: 'rgba(255, 255, 255, 0.6)',
 };

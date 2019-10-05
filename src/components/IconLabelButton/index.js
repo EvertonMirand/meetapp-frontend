@@ -23,7 +23,7 @@ export default function IconLabelButton({ children, onClick, iconType }) {
 
   return (
     <Button onClick={onClick} color={color}>
-      <Icon size={24} color="#fff" />
+      <Icon size={24} color={Colors.defaultIcon} />
       {children}
     </Button>
   );

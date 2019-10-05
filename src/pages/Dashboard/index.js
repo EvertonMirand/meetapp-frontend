@@ -26,7 +26,6 @@ export default function Dashboard() {
         dateFormatted: format(parseISO(meetup.date), DEFAULT_DATE, {
           locale: pt,
         }),
-        past: isBefore(parseISO(meetup.date), new Date()),
       }));
 
       setMeetups(data);

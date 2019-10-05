@@ -1,16 +1,7 @@
 import React from 'react';
 
-import { Form } from '@rocketseat/unform';
-
-import { Container } from './styles';
-import ImageInput from '~/components/ImageInput';
+import MeetupForm from '~/components/MeetupForm';
 
 export default function NewMeetUp() {
-  return (
-    <Container>
-      <Form>
-        <ImageInput />
-      </Form>
-    </Container>
-  );
+  return <MeetupForm />;
 }

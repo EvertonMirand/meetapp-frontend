@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { darken } from 'polished';
 import Colors from '~/theme/Colors';
 
 export const Container = styled.div`
-  background: rgba(0, 0, 0, 0.3);
+  background: ${Colors.headerBackground};
   padding: 0 30px;
 `;
 
@@ -49,7 +48,7 @@ export const Profile = styled.div`
 
     strong {
       display: block;
-      color: #fff;
+      color: ${Colors.defaultText};
       font-size: 14px;
       font-weight: bold;
     }
@@ -58,7 +57,7 @@ export const Profile = styled.div`
       display: block;
       margin-top: 2px;
       font-size: 14px;
-      color: #999;
+      color: ${Colors.linkDark};
     }
   }
 `;

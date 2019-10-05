@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
 import { MdChevronRight, MdChevronLeft } from 'react-icons/md';
-import { format, parseISO, isBefore } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import { Container, MeetUp, PageControl } from './styles';
 
-import AddButton from '~/components/AddButton';
+import IconLabelButton from '~/components/IconLabelButton';
 import Colors from '~/theme/Colors';
 import api from '~/services/api';
 import { ORGANIZING } from '~/constants/ApiCalls';
@@ -47,7 +47,7 @@ export default function Dashboard() {
     <header>
       <h1>Meus meetups</h1>
       <Link to="new">
-        <AddButton>Novo meetup</AddButton>
+        <IconLabelButton>Novo meetup</IconLabelButton>
       </Link>
     </header>
   );

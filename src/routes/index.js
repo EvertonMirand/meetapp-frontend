@@ -17,8 +17,8 @@ export default function Routes() {
       <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/profile" component={Profile} isPrivate />
       <Route path="/new" component={NewMeetUp} isPrivate />
-      <Route path="/edit:id" component={EditMeetUp} isPrivate />
-      <Route path="/meetup:id" component={MeetUp} isPrivate />
+      <Route path="/edit/:id" component={EditMeetUp} isPrivate />
+      <Route path="/meetup/:id" component={MeetUp} isPrivate />
     </Switch>
   );
 }

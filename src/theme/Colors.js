@@ -8,4 +8,7 @@ export default {
   buttonBackground: '#f94d6a',
   span: '#fb6f91',
   listBackground: 'rgba(0, 0, 0, 0.1)',
+  editButton: '#4DBAF9',
+  headerBackground: 'rgba(0, 0, 0, 0.3)',
+  linkDark: '#999',
 };

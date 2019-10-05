@@ -3,7 +3,7 @@ import { darken } from 'polished';
 import Colors from '~/theme/Colors';
 
 const Button = styled.button`
-  background: ${Colors.buttonBackground};
+  background: ${props => props.color || Colors.buttonBackground};
   color: ${Colors.defaultText};
   border: 0;
   border-radius: 4px;
@@ -17,7 +17,8 @@ const Button = styled.button`
   justify-content: space-between;
 
   &:hover {
-    background: ${darken(0.03, Colors.buttonBackground)};
+    background: ${props =>
+      darken(0.03, props.color || Colors.buttonBackground)};
   }
 `;
 

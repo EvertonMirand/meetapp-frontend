@@ -4,7 +4,7 @@ import { Form, Input } from '@rocketseat/unform';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { Container } from './styles';
-import AddButton from '~/components/AddButton';
+import IconLabelButton from '~/components/IconLabelButton';
 import { updateProfileRequest } from '~/store/modules/user/actions';
 
 export default function Profile() {
@@ -31,7 +31,7 @@ export default function Profile() {
           name="confirmPassword"
           placeholder="Confirmação de senha"
         />
-        <AddButton type="submit">Salvar Perfil</AddButton>
+        <IconLabelButton type="submit">Salvar Perfil</IconLabelButton>
       </Form>
     </Container>
   );

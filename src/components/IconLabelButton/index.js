@@ -6,7 +6,12 @@ import Colors from '~/theme/Colors';
 
 // import { Container } from './styles';
 
-export default function IconLabelButton({ children, onClick, iconType }) {
+export default function IconLabelButton({
+  children,
+  onClick,
+  iconType,
+  buttonType,
+}) {
   const iconAndColorBytype = () => {
     switch (iconType) {
       case 'edit':
@@ -22,7 +27,7 @@ export default function IconLabelButton({ children, onClick, iconType }) {
   const [Icon, color] = iconAndColorBytype();
 
   return (
-    <Button onClick={onClick} color={color}>
+    <Button onClick={onClick} color={color} type={buttonType}>
       <Icon size={24} color={Colors.defaultIcon} />
       {children}
     </Button>
@@ -37,9 +42,11 @@ IconLabelButton.propTypes = {
 
   onClick: PropTypes.func,
   iconType: PropTypes.oneOf(['add', 'edit', 'remove']),
+  buttonType: PropTypes.string,
 };
 
 IconLabelButton.defaultProps = {
   onClick: () => {},
   iconType: 'add',
+  buttonType: 'button',
 };

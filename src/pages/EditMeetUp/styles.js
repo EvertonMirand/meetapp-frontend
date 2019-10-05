@@ -48,5 +48,21 @@ export const Container = styled.div`
       padding: 15px 15px;
       font-size: 18px;
     }
+
+    button {
+      display: flex;
+      align-content: center;
+      align-items: center;
+      align-self: flex-end;
+      /* width: 162px; */
+      padding: 0 25px;
+      margin: 5px 0 0;
+      margin-top: 10px;
+      height: 42px;
+
+      svg {
+        margin-right: 5px;
+      }
+    }
   }
 `;

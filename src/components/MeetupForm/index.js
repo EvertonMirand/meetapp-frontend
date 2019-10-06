@@ -56,6 +56,10 @@ MeetupForm.propTypes = {
       url: PropTypes.string,
     }),
     date: PropTypes.string,
-  }).isRequired,
+  }),
   onSubmit: PropTypes.func.isRequired,
+};
+
+MeetupForm.defaultProps = {
+  meetup: {},
 };

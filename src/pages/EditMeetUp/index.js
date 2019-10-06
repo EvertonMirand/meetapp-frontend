@@ -2,10 +2,14 @@ import React, { useMemo } from 'react';
 
 import PropTypes from 'prop-types';
 import { parseISO } from 'date-fns';
+import { useDispatch } from 'react-redux';
 
 import MeetupForm from '~/components/MeetupForm';
+import { updateMeetupRequest } from '~/store/modules/meetup/actions';
 
 export default function EditMeetUp({ location }) {
+  const dispatch = useDispatch();
+
   const meetup = useMemo(
     () => ({
       ...location.state.meetup,
@@ -14,7 +18,11 @@ export default function EditMeetUp({ location }) {
     [location.state.meetup]
   );
 
-  return <MeetupForm meetup={meetup} onSubmit={() => {}} />;
+  const handleSubmit = data => {
+    dispatch(updateMeetupRequest(meetup.id, data));
+  };
+
+  return <MeetupForm meetup={meetup} onSubmit={handleSubmit} />;
 }
 
 EditMeetUp.propTypes = {

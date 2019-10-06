@@ -9,21 +9,24 @@ import Colors from '~/theme/Colors';
 
 export default function MeetUp({ location }) {
   const { meetup } = location.state;
+  const { past } = meetup;
 
   const renderHeader = () => (
     <header>
       <h1>{meetup.title}</h1>{' '}
-      <div>
-        <Link
-          to={{
-            pathname: `/edit/${meetup.id}`,
-            state: { meetup },
-          }}
-        >
-          <IconLabelButton iconType="edit">Editar</IconLabelButton>
-        </Link>
-        <IconLabelButton iconType="remove">Cancelar</IconLabelButton>
-      </div>
+      {!past && (
+        <div>
+          <Link
+            to={{
+              pathname: `/edit/${meetup.id}`,
+              state: { meetup },
+            }}
+          >
+            <IconLabelButton iconType="edit">Editar</IconLabelButton>
+          </Link>
+          <IconLabelButton iconType="remove">Cancelar</IconLabelButton>
+        </div>
+      )}
     </header>
   );
 
@@ -61,6 +64,7 @@ MeetUp.propTypes = {
         File: PropTypes.shape({
           url: PropTypes.string,
         }),
+        past: PropTypes.bool,
       }),
     }),
   }).isRequired,

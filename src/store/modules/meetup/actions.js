@@ -4,6 +4,9 @@ import {
   CREATE_MEETUP_SUCCESS,
   UPDATE_MEETUP_FAILURE,
   UPDATE_MEETUP_SUCCESS,
+  CANCEL_MEETUP_REQUEST,
+  CANCEL_MEETUP_FAILURE,
+  CANCEL_MEETUP_SUCCESS,
 } from './types';
 
 export function createMeetupRequest(meetup) {
@@ -27,10 +30,13 @@ export function createMeetupFailure() {
   };
 }
 
-export function updateMeetupRequest(meetup) {
+export function updateMeetupRequest(id, meetup) {
   return {
     type: UPDATE_MEETUP_REQUEST,
-    payload: { meetup },
+    payload: {
+      id,
+      meetup,
+    },
   };
 }
 
@@ -43,5 +49,27 @@ export function updateMeetupFailure() {
 export function updateMeetupSuccess() {
   return {
     type: UPDATE_MEETUP_SUCCESS,
+  };
+}
+
+export function cancelMeetupRequest(id, meetup) {
+  return {
+    type: CANCEL_MEETUP_REQUEST,
+    payload: {
+      id,
+      meetup,
+    },
+  };
+}
+
+export function cancelMeetupFailure() {
+  return {
+    type: CANCEL_MEETUP_FAILURE,
+  };
+}
+
+export function cancelMeetupSuccess() {
+  return {
+    type: CANCEL_MEETUP_SUCCESS,
   };
 }

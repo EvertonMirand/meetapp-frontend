@@ -1,9 +1,8 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import { Form, Input } from '@rocketseat/unform';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
-import { parseISO } from 'date-fns';
 import { Container } from './styles';
 import ImageInput from '~/components/ImageInput';
 import DatePicker from '~/components/DatePicker';

@@ -26,7 +26,7 @@ export default function Header() {
           <Profile>
             <div>
               <strong>{profile.name}</strong>
-              <Link to="profile">Meu perfil</Link>
+              <Link to="/profile">Meu perfil</Link>
             </div>
           </Profile>
           <Button onClick={handleSignOut}>Sair</Button>

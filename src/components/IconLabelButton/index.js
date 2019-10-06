@@ -11,6 +11,7 @@ export default function IconLabelButton({
   onClick,
   iconType,
   buttonType,
+  disabled,
 }) {
   const iconAndColorBytype = () => {
     switch (iconType) {
@@ -27,7 +28,12 @@ export default function IconLabelButton({
   const [Icon, color] = iconAndColorBytype();
 
   return (
-    <Button onClick={onClick} color={color} type={buttonType}>
+    <Button
+      onClick={onClick}
+      color={color}
+      type={buttonType}
+      disabled={disabled}
+    >
       <Icon size={24} color={Colors.defaultIcon} />
       {children}
     </Button>
@@ -43,10 +49,12 @@ IconLabelButton.propTypes = {
   onClick: PropTypes.func,
   iconType: PropTypes.oneOf(['add', 'edit', 'remove']),
   buttonType: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 IconLabelButton.defaultProps = {
   onClick: () => {},
   iconType: 'add',
   buttonType: 'button',
+  disabled: false,
 };

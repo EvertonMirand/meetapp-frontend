@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Colors from '~/theme/Colors';
 
 export const Container = styled.div`
   max-width: 920px;
@@ -19,15 +20,15 @@ export const Container = styled.div`
 
     input,
     textarea {
-      background: rgba(0, 0, 0, 0.1);
+      background: ${Colors.inputBackground};
       border: 0;
       border-radius: 4px;
-      color: #fff;
+      color: ${Colors.defaultText};
       margin: 0 0 10px;
       font-size: 18px;
 
       &::placeholder {
-        color: rgba(255, 255, 255, 0.5);
+        color: ${Colors.placeholder};
       }
     }
 
@@ -37,7 +38,7 @@ export const Container = styled.div`
     }
 
     span {
-      color: #fb6f91;
+      color: ${Colors.span};
       align-self: flex-start;
       margin: 0 0 10px;
       font-weight: bold;
@@ -49,7 +50,7 @@ export const Container = styled.div`
       font-size: 18px;
     }
 
-    button {
+    > button {
       display: flex;
       align-content: center;
       align-items: center;

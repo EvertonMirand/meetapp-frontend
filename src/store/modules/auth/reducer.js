@@ -4,6 +4,8 @@ import {
   SIGN_IN_REQUEST,
   SIGN_FAILURE,
   SIGN_OUT,
+  SIGN_UP_REQUEST,
+  SIGN_UP_SUCCESS,
 } from './type';
 
 const INITIAL_STATE = {
@@ -25,6 +27,7 @@ export default function auth(state = INITIAL_STATE, action) {
         draft.loading = true;
         break;
       }
+      case SIGN_UP_SUCCESS:
       case SIGN_FAILURE: {
         draft.loading = false;
         break;
@@ -34,6 +37,11 @@ export default function auth(state = INITIAL_STATE, action) {
         draft.signed = false;
         break;
       }
+      case SIGN_UP_REQUEST: {
+        draft.loading = true;
+        break;
+      }
+
       default:
     }
   });

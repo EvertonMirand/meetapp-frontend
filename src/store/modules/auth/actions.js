@@ -4,6 +4,7 @@ import {
   SIGN_UP_REQUEST,
   SIGN_FAILURE,
   SIGN_OUT,
+  SIGN_UP_SUCCESS,
 } from './type';
 
 export function signInRequest(email, password) {
@@ -34,6 +35,12 @@ export function signUpRequest(name, email, password) {
       email,
       password,
     },
+  };
+}
+
+export function signUpSuccess() {
+  return {
+    type: SIGN_UP_SUCCESS,
   };
 }
 

@@ -15,12 +15,14 @@ import { DEFAULT_DATE } from '~/constants/DateFormat';
 export default function Dashboard() {
   const [meetups, setMeetups] = useState([]);
   const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     const loadMeetups = async () => {
       const response = await api.get(ORGANIZING, {
         params: { page },
       });
+
       const data = response.data.map(meetup => ({
         ...meetup,
         dateFormatted: format(parseISO(meetup.date), DEFAULT_DATE, {
@@ -28,10 +30,14 @@ export default function Dashboard() {
         }),
       }));
 
+      const countPages = Number(response.headers['x-total-page']);
+
+      setTotalPages(countPages);
+
       setMeetups(data);
     };
     loadMeetups();
-  }, [page]);
+  }, [page]); // eslint-disable-line
 
   const handleNextPage = () => {
     setPage(page + 1);
@@ -40,8 +46,6 @@ export default function Dashboard() {
   const handlePrevPage = () => {
     setPage(page - 1);
   };
-
-  const quantidadeMeetUps = meetups.length;
 
   const renderHeader = () => (
     <header>
@@ -83,7 +87,7 @@ export default function Dashboard() {
       <button
         type="button"
         onClick={handleNextPage}
-        disabled={quantidadeMeetUps < 10}
+        disabled={totalPages === page}
       >
         <MdChevronRight size={25} />
       </button>

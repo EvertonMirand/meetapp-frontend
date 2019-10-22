@@ -10,6 +10,7 @@ import { updateProfileRequest } from '~/store/modules/user/actions';
 export default function Profile() {
   const dispatch = useDispatch();
   const profile = useSelector(state => state.user.profile);
+
   function handleSubmit(data) {
     dispatch(updateProfileRequest(data));
   }
@@ -31,7 +32,7 @@ export default function Profile() {
           name="confirmPassword"
           placeholder="Confirmação de senha"
         />
-        <IconLabelButton type="submit">Salvar Perfil</IconLabelButton>
+        <IconLabelButton buttonType="submit">Salvar Perfil</IconLabelButton>
       </Form>
     </Container>
   );

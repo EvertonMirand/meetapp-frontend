@@ -37,8 +37,8 @@ export const Detail = styled.div`
   justify-content: space-between;
   max-width: 920px;
   margin: 50px auto;
-
   flex-direction: column;
+  white-space: pre-wrap;
 
   img {
     height: 300px;

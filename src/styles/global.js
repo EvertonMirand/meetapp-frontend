@@ -17,12 +17,16 @@ export default createGlobalStyle`
     outline: 0;
   }
 
-  html, body, #root {
+  html, body {
     height: 100%;
   }
 
+  #root {
+    min-height: 100vh;
+  }
+
   body {
-    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased !important;
   }
 
   body, input, button {

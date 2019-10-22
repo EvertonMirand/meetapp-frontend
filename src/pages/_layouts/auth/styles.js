@@ -4,10 +4,12 @@ import Colors from '~/theme/Colors';
 
 export const Wrapper = styled.div`
   height: 100%;
+  min-height: 100vh;
+  overflow: auto;
   background: linear-gradient(
-    180deg,
-    ${Colors.backgroundPrimary} 0%,
-    ${Colors.backgroundSecundary} 100%
+    90deg,
+    ${Colors.backgroundPrimary},
+    ${Colors.backgroundSecundary}
   );
   display: flex;
   justify-content: center;
@@ -54,7 +56,6 @@ export const Content = styled.div`
       border: 0;
       border-radius: 4px;
       font-size: 16px;
-
       transition: backgroung 0.2s;
 
       &:hover {

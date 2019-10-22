@@ -22,7 +22,7 @@ export default function auth(state = INITIAL_STATE, action) {
         break;
       }
       case SIGN_IN_REQUEST: {
-        draft.loading = false;
+        draft.loading = true;
         break;
       }
       case SIGN_FAILURE: {

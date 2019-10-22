@@ -10,4 +10,13 @@ export const Wrapper = styled.div`
     ${Colors.backgroundPrimary},
     ${Colors.backgroundSecundary}
   );
+
+  form {
+    span {
+      color: ${Colors.span};
+      align-self: flex-start;
+      margin: 0 10px 10px;
+      font-weight: bold;
+    }
+  }
 `;

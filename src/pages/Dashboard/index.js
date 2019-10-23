@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 import { MdChevronRight, MdChevronLeft } from 'react-icons/md';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
-import { Container, MeetUp, PageControl } from './styles';
+import Loader from 'react-loader-spinner';
+
+import { Container, MeetUp, PageControl, Spinner } from './styles';
 
 import IconLabelButton from '~/components/IconLabelButton';
 import Colors from '~/theme/Colors';
@@ -16,26 +18,39 @@ export default function Dashboard() {
   const [meetups, setMeetups] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(false);
+
+  const fetchMeetups = async () => {
+    const response = await api.get(ORGANIZING, {
+      params: { page },
+    });
+
+    setLoading(false);
+
+    const data = response.data.map(meetup => ({
+      ...meetup,
+      dateFormatted: format(parseISO(meetup.date), DEFAULT_DATE, {
+        locale: pt,
+      }),
+    }));
+
+    const countPages = Number(response.headers['x-total-page']);
+
+    setTotalPages(countPages);
+
+    setMeetups(data);
+  };
+
+  const loadMeetups = async () => {
+    setLoading(true);
+    try {
+      await fetchMeetups();
+    } catch (err) {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const loadMeetups = async () => {
-      const response = await api.get(ORGANIZING, {
-        params: { page },
-      });
-
-      const data = response.data.map(meetup => ({
-        ...meetup,
-        dateFormatted: format(parseISO(meetup.date), DEFAULT_DATE, {
-          locale: pt,
-        }),
-      }));
-
-      const countPages = Number(response.headers['x-total-page']);
-
-      setTotalPages(countPages);
-
-      setMeetups(data);
-    };
     loadMeetups();
   }, [page]); // eslint-disable-line
 
@@ -97,8 +112,27 @@ export default function Dashboard() {
   return (
     <Container>
       {renderHeader()}
-      {renderMeetups()}
-      {renderPageControl()}
+      {/* <Spinner
+        type="TailSpin"
+        color={Colors.buttonBackground}
+        height={100}
+        width={100}
+        timeout={10000} // 10 secs
+      /> */}
+      {loading ? (
+        <Spinner
+          type="TailSpin"
+          color={Colors.buttonBackground}
+          height={100}
+          width={100}
+          timeout={10000} // 10 secs
+        />
+      ) : (
+        <>
+          {renderMeetups()}
+          {renderPageControl()}
+        </>
+      )}
     </Container>
   );
 }

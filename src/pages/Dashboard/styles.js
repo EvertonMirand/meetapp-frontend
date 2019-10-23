@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
+import Loader from 'react-loader-spinner';
 import Colors from '~/theme/Colors';
 
 export const Container = styled.div`
@@ -36,6 +37,13 @@ export const Container = styled.div`
     grid-gap: 10px;
     display: grid;
   }
+`;
+
+export const Spinner = styled(Loader)`
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  margin-top: 100px;
 `;
 
 export const MeetUp = styled.li`

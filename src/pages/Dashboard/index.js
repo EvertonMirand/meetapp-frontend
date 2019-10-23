@@ -112,21 +112,9 @@ export default function Dashboard() {
   return (
     <Container>
       {renderHeader()}
-      {/* <Spinner
-        type="TailSpin"
-        color={Colors.buttonBackground}
-        height={100}
-        width={100}
-        timeout={10000} // 10 secs
-      /> */}
+
       {loading ? (
-        <Spinner
-          type="TailSpin"
-          color={Colors.buttonBackground}
-          height={100}
-          width={100}
-          timeout={10000} // 10 secs
-        />
+        <Spinner />
       ) : (
         <>
           {renderMeetups()}

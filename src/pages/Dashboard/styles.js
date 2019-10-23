@@ -39,7 +39,13 @@ export const Container = styled.div`
   }
 `;
 
-export const Spinner = styled(Loader)`
+export const Spinner = styled(Loader).attrs({
+  type: 'TailSpin',
+  color: Colors.buttonBackground,
+  height: 100,
+  width: 100,
+  timeout: 10000, // 10 secs
+})`
   display: flex;
   justify-items: center;
   justify-content: center;

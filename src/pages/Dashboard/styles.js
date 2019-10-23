@@ -20,7 +20,6 @@ export const Container = styled.div`
 
     button {
       height: 44px;
-      font-weight: bold;
       border: 0;
       border-radius: 4px;
       font-size: 16px;
@@ -29,6 +28,9 @@ export const Container = styled.div`
       display: flex;
       height: 42;
       border: 0;
+      svg {
+        margin-right: 10px;
+      }
     }
   }
 

@@ -23,6 +23,13 @@ export const Container = styled.div`
         display: flex;
         height: 44px;
         padding: 5px 10px 5px 10px;
+        justify-content: space-between;
+        padding: 0 20px;
+        font-weight: bold;
+        font-size: 16px;
+        svg {
+          margin-right: 10px;
+        }
       }
 
       > button {

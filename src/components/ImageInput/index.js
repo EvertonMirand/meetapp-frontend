@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 import { useField } from '@rocketseat/unform';
+import { MdPhotoCamera } from 'react-icons/md';
+
 import { Container } from './styles';
 import api from '~/services/api';
 
@@ -37,7 +39,14 @@ export default function ImageInput() {
   return (
     <Container>
       <label htmlFor="File">
-        <img src={preview} alt="" />
+        {preview ? (
+          <img src={preview} alt="" />
+        ) : (
+          <>
+            <MdPhotoCamera />
+            <text>Selecionar Imagem</text>
+          </>
+        )}
 
         <input
           type="file"

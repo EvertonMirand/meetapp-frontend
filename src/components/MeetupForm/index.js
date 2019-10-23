@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { useSelector } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
@@ -23,6 +24,8 @@ const MEETUP_SCHEMA = Yup.object().shape({
 });
 
 export default function MeetupForm({ meetup, onSubmit }) {
+  const loading = useSelector(state => state.meetup.loading);
+
   return (
     <Container>
       <Form schema={MEETUP_SCHEMA} initialData={meetup} onSubmit={onSubmit}>
@@ -36,7 +39,12 @@ export default function MeetupForm({ meetup, onSubmit }) {
         />
         <DatePicker name="date" placeholder="Data do Meetup" />
         <Input name="location" placeholder="Localizacao" />
-        <IconLabelButton iconType="add" buttonType="submit">
+        <IconLabelButton
+          iconType="add"
+          buttonType="submit"
+          loading={loading}
+          disabled={loading}
+        >
           Salvar meetup
         </IconLabelButton>
       </Form>

@@ -3,6 +3,7 @@ import { MdAddCircleOutline, MdEdit, MdDeleteForever } from 'react-icons/md';
 import PropTypes from 'prop-types';
 import Button from '../Button';
 import Colors from '~/theme/Colors';
+import { Spinner } from './styles';
 
 // import { Container } from './styles';
 
@@ -12,6 +13,7 @@ export default function IconLabelButton({
   iconType,
   buttonType,
   disabled,
+  loading,
 }) {
   const iconAndColorBytype = () => {
     switch (iconType) {
@@ -34,8 +36,14 @@ export default function IconLabelButton({
       type={buttonType}
       disabled={disabled}
     >
-      <Icon size={24} color={Colors.defaultIcon} />
-      {children}
+      {loading ? (
+        <Spinner />
+      ) : (
+        <>
+          <Icon size={24} color={Colors.defaultIcon} />
+          {children}
+        </>
+      )}
     </Button>
   );
 }
@@ -50,6 +58,7 @@ IconLabelButton.propTypes = {
   iconType: PropTypes.oneOf(['add', 'edit', 'remove']),
   buttonType: PropTypes.string,
   disabled: PropTypes.bool,
+  loading: PropTypes.bool,
 };
 
 IconLabelButton.defaultProps = {
@@ -57,4 +66,5 @@ IconLabelButton.defaultProps = {
   iconType: 'add',
   buttonType: 'button',
   disabled: false,
+  loading: false,
 };

@@ -112,7 +112,6 @@ export default function Dashboard() {
   return (
     <Container>
       {renderHeader()}
-
       {loading ? (
         <Spinner />
       ) : (

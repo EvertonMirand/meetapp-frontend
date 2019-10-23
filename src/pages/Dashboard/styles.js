@@ -40,7 +40,7 @@ export const Container = styled.div`
 `;
 
 export const Spinner = styled(Loader).attrs({
-  type: 'TailSpin',
+  type: 'Oval',
   color: Colors.buttonBackground,
   height: 100,
   width: 100,

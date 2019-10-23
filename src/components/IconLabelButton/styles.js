@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import Loader from 'react-loader-spinner';
 
 import Colors from '~/theme/Colors';
-import Button from '../Button';
 
 export const Spinner = styled(Loader).attrs({
   type: 'Oval',

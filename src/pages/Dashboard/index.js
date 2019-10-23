@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { MdChevronRight, MdChevronLeft } from 'react-icons/md';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
-import Loader from 'react-loader-spinner';
 
 import { Container, MeetUp, PageControl, Spinner } from './styles';
 

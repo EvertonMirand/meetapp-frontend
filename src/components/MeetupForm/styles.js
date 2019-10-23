@@ -18,6 +18,15 @@ export const Container = styled.div`
     flex-direction: column;
     margin-top: 30px;
 
+    .react-datepicker__input-container {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      input {
+        width: 100%;
+      }
+    }
+
     input,
     textarea {
       background: ${Colors.inputBackground};

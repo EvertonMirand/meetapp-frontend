@@ -69,6 +69,7 @@ export const Container = styled.div`
       margin: 5px 0 0;
       margin-top: 10px;
       height: 42px;
+      font-weight: bold;
 
       svg {
         margin-right: 5px;

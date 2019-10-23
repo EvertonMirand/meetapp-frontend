@@ -23,6 +23,7 @@ export const Container = styled.div`
       border: 0;
       border-radius: 4px;
       font-size: 16px;
+      font-weight: bold;
       transition: background 0.2s;
       padding: 0 25px;
       display: flex;

@@ -33,7 +33,7 @@ export default function Dashboard() {
       }),
     }));
 
-    const countPages = Number(response.headers['x-total-page']);
+    const countPages = Number(response.headers['x-total-page']) || 1;
 
     setTotalPages(countPages);
 
